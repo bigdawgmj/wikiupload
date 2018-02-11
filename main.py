@@ -67,18 +67,18 @@ def main():
     http = credentials.authorize(httplib2.Http())
     service = discovery.build('drive', 'v3', http=http)
 
-    results = service.files().list(
-        pageSize=10,fields="nextPageToken, files(id, name)").execute()
-    items = results.get('files', [])
-    if not items:
-        print('No files found.')
-    else:
-        print('Files:')
-        for item in items:
-            if config.get('googleinfo', 'parent_folder') in item['name']:
-                dir_id = item['id']
+    # results = service.parents().list(
+    #     pageSize=10,fields="nextPageToken, files(id, name)").execute()
+    # items = results.get('files', [])
+    # if not items:
+    #     print('No files found.')
+    # else:
+    #     for item in items:
+    #         if config.get('googleinfo', 'parent_folder') in item['name']:
+    #             dir_id = item['id']
         
-        print(dir_id)
+    #     print(dir_id)
+    dir_id = config.get('googleinfo', 'parent_folder')
 
     wiki_path = config.get('localinfo', 'wiki_path') 
     fm = FileManager(wiki_path)
