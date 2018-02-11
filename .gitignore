@@ -1,0 +1,12 @@
+# Ignore pyc and ini files
+*.pyc
+*.ini
+
+# ingnore testing coverage/cache files
+htmlcov/
+.coverage
+.pytest_cache/
+__pycache__/
+
+# ignore vim .swp files
+*.swp
